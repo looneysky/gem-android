@@ -52,6 +52,11 @@ jobs:
       - name: Setup Rust cache
         uses: Swatinem/rust-cache@v2
 
+      - name: Install Rust dependencies
+        run: |
+          rustup component add rustfmt
+          cargo install typeshare-cli --version 1.12.0 --force
+
       - name: Install `just` utility
         run: |
           sudo apt-get update
@@ -61,7 +66,7 @@ jobs:
       - name: Install NDK
         run: make install-ndk
 
-      - name: Install dependencies
+      - name: Install project dependencies
         run: |
           make install-typeshare
           make install-toolchains
