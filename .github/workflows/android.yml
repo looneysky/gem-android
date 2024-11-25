@@ -49,8 +49,16 @@ jobs:
       - name: Install Android dependencies
         run: sdkmanager "build-tools;33.0.0" "platform-tools" "platforms;android-33"
 
+      - name: Install sccache
+        run: |
+          curl -L https://github.com/mozilla/sccache/releases/download/0.3.0/sccache-0.3.0-x86_64-unknown-linux-musl.tar.gz | tar xz
+          sudo mv sccache-*/bin/sccache /usr/local/bin/sccache
+
       - name: Setup Rust cache
         uses: Swatinem/rust-cache@v2
+        with:
+          # Указываем путь к каталогу с Cargo.toml, если он не в корне
+          path: "./your-rust-project-directory"  # Поменяйте на правильный путь, если необходимо
 
       - name: Install Rust dependencies
         run: |
