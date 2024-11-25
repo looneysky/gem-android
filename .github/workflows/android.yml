@@ -51,7 +51,7 @@ jobs:
 
       - name: Install sccache
         run: |
-          curl -L https://github.com/mozilla/sccache/releases/download/0.3.0/sccache-0.3.0-x86_64-unknown-linux-musl.tar.gz | tar xz
+          curl -L https://github.com/mozilla/sccache/releases/download/v0.4.0/sccache-0.4.0-x86_64-unknown-linux-musl.tar.gz | tar xz
           sudo mv sccache-*/bin/sccache /usr/local/bin/sccache
 
       - name: Setup Rust cache
