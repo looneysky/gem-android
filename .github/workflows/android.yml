@@ -52,6 +52,12 @@ jobs:
       - name: Setup Rust cache
         uses: Swatinem/rust-cache@v2
 
+      - name: Install `just` utility
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl
+          curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin
+
       - name: Install NDK
         run: make install-ndk
 
